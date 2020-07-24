@@ -4,6 +4,7 @@ import axios from 'axios'
 const initialState = {
     profiles: [],
     loading: true,
+    userSelect:false
     // errors: {}
 }
 export default function (state = initialState, action) {
@@ -22,7 +23,7 @@ export const maxSource=`http://www.filltext.com/?rows=1000&id={number|1000}&firs
 
 // GET  users
 export const getUsers = (x) => async (dispatch) => {
-    debugger
+
     try {
         const res = await axios.get(x)
 
