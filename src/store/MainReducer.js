@@ -1,15 +1,20 @@
-import {DATA_ERROR, GET_DATA } from "./Action-Types";
+import {CLEAR_DATA, CLOSE_MODAL, DATA_ERROR, GET_DATA} from "./Action-Types";
 import axios from 'axios'
 
 const initialState = {
+    modal:true,
     profiles: [],
-    loading: true,
+    loading: false,
     userSelect:false
     // errors: {}
 }
 export default function (state = initialState, action) {
     const {type, payload} = action;
     switch (type) {
+        case CLEAR_DATA:
+            return {...state,profiles:[],modal: true,loading: false}
+        case CLOSE_MODAL:
+            return {...state,modal: false,loading: true}
         case GET_DATA:
             return {...state, profiles: payload,loading: false}
         default:
@@ -23,7 +28,9 @@ export const maxSource=`http://www.filltext.com/?rows=1000&id={number|1000}&firs
 
 // GET  users
 export const getUsers = (x) => async (dispatch) => {
-
+    dispatch({
+        type:CLOSE_MODAL
+    })
     try {
         const res = await axios.get(x)
 
@@ -38,4 +45,11 @@ export const getUsers = (x) => async (dispatch) => {
         // })
         console.log(err)
     }
+}
+// Clear users
+export const clearData = (x) => (dispatch) => {
+    dispatch({
+        type:CLEAR_DATA
+    })
+
 }
