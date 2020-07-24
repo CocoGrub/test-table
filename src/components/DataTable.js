@@ -43,10 +43,14 @@ const DataTable = ({profiles,clearData}) => {
     const filterAddress=(x)=>{
         if(x===currentFilter.currentValue){
             changeTable([...table].sort((x, y) =>(x.address.city < y.address.city)?1:-1))
-            switchFilter('');
-        }else {
-            switchFilter(x);
+            switchFilter(x,"ascending");
+        }else if(x!==currentFilter.currentValue&&currentFilter.method!=="descending") {
+            switchFilter(x,"descending");
             changeTable([...table].sort((x, y) =>(x.address.city > y.address.city)?1:-1))
+        }else {
+            switchFilter(null,null);
+            changeTable([...profiles])
+
         }
     }
 
@@ -74,6 +78,10 @@ const DataTable = ({profiles,clearData}) => {
 
     const setPage=(pageNumber)=>setCurrentPage(pageNumber)
     const {currentValue,method}=currentFilter
+    function styling(x) {
+        return currentValue===x&&method==="descending"?"descending":currentValue===x&&method==="ascending"?"ascending":""
+
+    }
     return (
         <>
             <button onClick={()=>clearData()}> Return to source selection</button>
@@ -82,12 +90,12 @@ const DataTable = ({profiles,clearData}) => {
             <table className={"profiles"}>
                 <thead>
                 <tr>
-                    <th className={currentValue=="firstName"&&method==="descending"?"descending":currentValue=="firstName"&&method==="ascending"?"ascending":""} onClick={()=>{setFilter("firstName")}}>First Name</th>
-                    <th className={currentValue==="lastName"?"active":''} onClick={()=>{setFilter("lastName")}}>Last Name</th>
-                    <th className={currentValue==="email"?"active":''} onClick={()=>{setFilter("email")}}>E-mail</th>
-                    <th className={currentValue==="phone"?"active":''} onClick={()=>{setFilter("phone")}}>Phone Number</th>
-                    <th className={currentValue==="address"?"active":''} onClick={()=>{filterAddress("address")}}>Address</th>
-                    <th className={currentValue==="description"?"active":''} onClick={()=>{setFilter("description")}}>Description</th>
+                    <th className={styling("firstName")} onClick={()=>{setFilter("firstName")}}>First Name</th>
+                    <th className={styling("lastName")} onClick={()=>{setFilter("lastName")}}>Last Name</th>
+                    <th className={styling("email")} onClick={()=>{setFilter("email")}}>E-mail</th>
+                    <th className={styling("phone")} onClick={()=>{setFilter("phone")}}>Phone Number</th>
+                    <th className={styling("address")} onClick={()=>{filterAddress("address")}}>Address</th>
+                    <th className={styling("description")} onClick={()=>{setFilter("description")}}>Description</th>
                 </tr>
                 </thead>
                 <tbody>{Users}</tbody>
