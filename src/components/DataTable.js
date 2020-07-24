@@ -8,19 +8,24 @@ const DataTable = ({profiles,clearData}) => {
 
     const [table,changeTable]=useState(profiles)
     const [currentFilter,changeCurrentFilter]=useState({
-        currentValue:null
+        currentValue:null,
+        method:null
     })
     const switchFilter=(x,y)=>{
-        changeCurrentFilter({...currentFilter,currentValue: x});
+        changeCurrentFilter({...currentFilter,currentValue: x,method: y});
     }
     const setFilter=(x)=>{
-        if(x===currentFilter.currentValue){
+        if(x===currentFilter.currentValue&&method!=="ascending"){
             changeTable([...table].sort(dynamicSort( '-' + x)))
-            switchFilter('');
-        }else {
-            switchFilter(x);
+            switchFilter(x,"ascending");
+        }else if(x!==currentFilter.currentValue){
+            switchFilter(x,"descending");
             changeTable([...table].sort(dynamicSort( x)))
+        }else{
+            switchFilter(null,null);
+            changeTable([...profiles])
         }
+
     }
 
     function dynamicSort(property) {
@@ -68,6 +73,7 @@ const DataTable = ({profiles,clearData}) => {
     })
 
     const setPage=(pageNumber)=>setCurrentPage(pageNumber)
+    const {currentValue,method}=currentFilter
     return (
         <>
             <button onClick={()=>clearData()}> Return to source selection</button>
@@ -76,12 +82,12 @@ const DataTable = ({profiles,clearData}) => {
             <table className={"profiles"}>
                 <thead>
                 <tr>
-                    <th onClick={()=>{setFilter("firstName")}}>First Name</th>
-                    <th onClick={()=>{setFilter("lastName")}}>Last Name</th>
-                    <th onClick={()=>{setFilter("email")}}>E-mail</th>
-                    <th onClick={()=>{setFilter("phone")}}>Phone Number</th>
-                    <th onClick={()=>{filterAddress("address")}}>Address</th>
-                    <th onClick={()=>{setFilter("description")}}>Description</th>
+                    <th className={currentValue=="firstName"&&method==="descending"?"descending":currentValue=="firstName"&&method==="ascending"?"ascending":""} onClick={()=>{setFilter("firstName")}}>First Name</th>
+                    <th className={currentValue==="lastName"?"active":''} onClick={()=>{setFilter("lastName")}}>Last Name</th>
+                    <th className={currentValue==="email"?"active":''} onClick={()=>{setFilter("email")}}>E-mail</th>
+                    <th className={currentValue==="phone"?"active":''} onClick={()=>{setFilter("phone")}}>Phone Number</th>
+                    <th className={currentValue==="address"?"active":''} onClick={()=>{filterAddress("address")}}>Address</th>
+                    <th className={currentValue==="description"?"active":''} onClick={()=>{setFilter("description")}}>Description</th>
                 </tr>
                 </thead>
                 <tbody>{Users}</tbody>

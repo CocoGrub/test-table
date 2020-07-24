@@ -9,7 +9,19 @@
   border: 1px solid #ddd;
   padding: 8px;
 }
+.profiles th{
+  cursor: pointer;
+}
 
+
+.profiles .descending:after{
+  color: black;
+  content: "▼";
+}
+.profiles .ascending:after{
+  color: black;
+  content: "▲";
+}
 .profiles  tr:nth-child(even){background-color: #f2f2f2;}
 
 .profiles tr:hover {background-color: #ddd;}
@@ -82,5 +94,4 @@
 }
 .spinner{
   margin: 15rem auto;
-
 }
