@@ -1,19 +1,19 @@
 import React, {useState} from "react";
 
 
-const Pagination = ({portionSize=12, totalUsersCount,paginate,}) => {
+const Pagination = ({ItemsPerPage = 12, totalUsersCount,setPage,currentPage}) => {
 
     let [portionNumber, setPortionNumber] = useState(1);
-    let leftPortionPageNumber = (portionNumber - 1) * portionSize + 1;
-    let rightPortionPageNumber = portionNumber * portionSize;
+    let leftPortionPageNumber = (portionNumber - 1) * ItemsPerPage + 1;
+    let rightPortionPageNumber = portionNumber * ItemsPerPage;
 
 
-    let pagesCount = Math.ceil(totalUsersCount / portionSize);
+    let pagesCount = Math.ceil(totalUsersCount / ItemsPerPage);
     const pageNumbers = [];
-    for (let i = 1; i <= Math.ceil(totalUsersCount / portionSize); i++) {
+    for (let i = 1; i <= Math.ceil(totalUsersCount / ItemsPerPage); i++) {
         pageNumbers.push(i)
     }
-    let portionCount = Math.ceil(pagesCount / portionSize);
+    let portionCount = Math.ceil(pagesCount / ItemsPerPage);
     return (
         <div className={"center"}>
         <div className={"pagination"}>
@@ -25,10 +25,10 @@ const Pagination = ({portionSize=12, totalUsersCount,paginate,}) => {
             {pageNumbers
                 .filter(p => p >= leftPortionPageNumber && p <= rightPortionPageNumber)
                 .map((p) => {
-                    return <span
+                    return <span className={currentPage === p?"active":""}
                                  key={p}
                                  onClick={(e) => {
-                                     paginate(p);
+                                     setPage(p);
                                  }}>{p}</span>
                 })}
             {portionCount > portionNumber &&
@@ -40,5 +40,4 @@ const Pagination = ({portionSize=12, totalUsersCount,paginate,}) => {
         </div>
     )
 }
-
 export default Pagination;

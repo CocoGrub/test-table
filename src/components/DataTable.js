@@ -5,10 +5,10 @@ import Pagination from "./Pagination";
 const DataTable = ({profiles}) => {
 
     const [currentPage,setCurrentPage]=useState(1)
-    const [postPerPage,setPostsPerPage]=useState(10)
+    const [ItemsPerPage]=useState(10)
 
-    const indexOfLastPost=currentPage*postPerPage
-    const indexOfFirstPost=indexOfLastPost-postPerPage
+    const indexOfLastPost=currentPage*ItemsPerPage
+    const indexOfFirstPost=indexOfLastPost-ItemsPerPage
     const currentPosts = profiles.slice(indexOfFirstPost,indexOfLastPost)
 
     const Users = currentPosts.map((profile) => {
@@ -23,11 +23,11 @@ const DataTable = ({profiles}) => {
         </tr>
     })
 
-    const paginate=(pageNumber)=>setCurrentPage(pageNumber)
+    const setPage=(pageNumber)=>setCurrentPage(pageNumber)
     return (
         <>
             <h2 className={"my-2"}>Users Data</h2>
-            <Pagination postPerPage={postPerPage} totalUsersCount={profiles.length} paginate={paginate}/>
+            <Pagination currentPage={currentPage} ItemsPerPage={ItemsPerPage} totalUsersCount={profiles.length} setPage={setPage}/>
             <table className={"profiles"}>
                 <thead>
                 <tr>
