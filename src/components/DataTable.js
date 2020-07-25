@@ -7,6 +7,7 @@ import {connect} from "react-redux";
 const DataTable = ({profiles,clearData}) => {
 
     const [table,changeTable]=useState(profiles)
+    const [searchValue,changeSearchValue]=useState('')
     const [currentFilter,changeCurrentFilter]=useState({
         currentValue:null,
         method:null
@@ -67,6 +68,7 @@ const DataTable = ({profiles,clearData}) => {
     const Users = currentPosts.map((profile) => {
         //because id's can be equal
         return <tr key={profile.id+profile.phone}>
+            <td>{profile.id}</td>
             <td>{profile.firstName}</td>
             <td>{profile.lastName}</td>
             <td>{profile.email}</td>
@@ -82,14 +84,34 @@ const DataTable = ({profiles,clearData}) => {
         return currentValue===x&&method==="descending"?"descending":currentValue===x&&method==="ascending"?"ascending":""
 
     }
+
+
+    const filtration=(y)=>{
+        changeTable([...profiles].filter((obj) => {
+            return Object.keys(obj).some((key) => {
+                if (obj[key] !== null) {
+                    const tempKey = obj[key].toString().toLowerCase();
+                    const tempSearch = y.toLowerCase().trim();
+                    return tempKey.includes(tempSearch);
+                }
+            });
+        }))
+    }
+
     return (
         <>
             <button onClick={()=>clearData()}> Return to source selection</button>
             <h2 className={"my-2"}>Users Data</h2>
             <Pagination currentPage={currentPage} ItemsPerPage={ItemsPerPage} totalUsersCount={profiles.length} setPage={setPage}/>
+
+
+            <input type="text" value={searchValue} placeholder={"search here..."} onChange={(e)=>{changeSearchValue(e.target.value)}}/>
+            <button  onClick={()=> filtration(searchValue)}>search</button>
+
             <table className={"profiles"}>
                 <thead>
                 <tr>
+                    <th className={styling("id")} onClick={()=>{setFilter("id")}}>ID</th>
                     <th className={styling("firstName")} onClick={()=>{setFilter("firstName")}}>First Name</th>
                     <th className={styling("lastName")} onClick={()=>{setFilter("lastName")}}>Last Name</th>
                     <th className={styling("email")} onClick={()=>{setFilter("email")}}>E-mail</th>
