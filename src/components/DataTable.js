@@ -144,7 +144,12 @@ const DataTable = ({profiles,clearData,openModalForm}) => {
                 <tbody>{Users}</tbody>
             </table>
             <div ref={myRef}>
-                {cellInfo?<TableCellInfo clearCellData={clearCellData} data={cellInfo}/>:null}
+                {cellInfo?<TableCellInfo
+                    clearCellData={clearCellData}
+                    firstName={cellInfo.firstName}
+                    description={cellInfo.description}
+                    address={cellInfo.address}
+                />:null}
             </div>
         </>
     )

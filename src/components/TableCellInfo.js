@@ -1,7 +1,7 @@
 import React from "react";
 
-const TableCellInfo=({clearCellData,data:{firstName,description,address:{streetAddress,city,state,zip}}})=>{
-
+const TableCellInfo=({clearCellData,firstName,description,address={streetAddress:'Italy',city:'Rome',state:'Rome',zip:'12345'}})=>{
+    const {streetAddress,city,state,zip}=address
     return(
         <div className={"TableCellInfo"}>
             <dl>
