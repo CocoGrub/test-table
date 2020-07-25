@@ -10,7 +10,7 @@ function App() {
 
     const showModal = (v,k) => {
         setModal(k)
-        // props.getBigThunk(v.id)
+
     }
     const closeModal = (k) => {
         if (k !== false) {

@@ -1,9 +1,8 @@
 import React, {useState} from "react";
 import {createPortal} from "react-dom";
-// import './modal.css'
 import {connect} from "react-redux";
 import {getUsers, maxSource, minSource} from "../store/MainReducer";
-// import {PostComment,postAnswer} from "../../redux/modalReducer";
+
 
 
 const Modal = ({modal,getUsers}) => {

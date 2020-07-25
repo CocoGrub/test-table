@@ -1,17 +1,36 @@
-import React, {useState} from "react";
+import React, {useRef, useState} from "react";
 import PropTypes from 'prop-types'
 import Pagination from "./Pagination";
 import {clearData} from "../store/MainReducer";
 import {connect} from "react-redux";
+import TableCellInfo from "./TableCellInfo";
+import UserAddForm from "./UserAddForm";
+import Modal from "./Modal";
 
 const DataTable = ({profiles,clearData}) => {
-
+    const [cellInfo,setCellInfo]=useState(null)
     const [table,changeTable]=useState(profiles)
     const [searchValue,changeSearchValue]=useState('')
     const [currentFilter,changeCurrentFilter]=useState({
         currentValue:null,
         method:null
     })
+    const clearCellData=()=>{
+        setCellInfo(null)
+    }
+    const [modal, setModal] = useState(false)
+
+    const showModal = (v,k) => {
+        setModal(k)
+
+    }
+    const closeModal = (k) => {
+        if (k !== false) {
+            setModal(false)
+        }
+
+    }
+
     const switchFilter=(x,y)=>{
         changeCurrentFilter({...currentFilter,currentValue: x,method: y});
     }
@@ -64,17 +83,20 @@ const DataTable = ({profiles,clearData}) => {
     const indexOfFirstPost=indexOfLastPost-ItemsPerPage
     const currentPosts = table.slice(indexOfFirstPost,indexOfLastPost)
 
+    const getTableCellData=(x)=>{
+        scrollToRef(myRef)
+        setCellInfo(x)
+    }
 
     const Users = currentPosts.map((profile) => {
         //because id's can be equal
-        return <tr key={profile.id+profile.phone}>
+        return <tr key={profile.id+profile.phone} onClick={()=>getTableCellData(profile)}>
             <td>{profile.id}</td>
             <td>{profile.firstName}</td>
             <td>{profile.lastName}</td>
             <td>{profile.email}</td>
             <td>{profile.phone}</td>
             <td>{profile.address.city}</td>
-            <td>{profile.description.slice(0,40)}</td>
         </tr>
     })
 
@@ -84,8 +106,8 @@ const DataTable = ({profiles,clearData}) => {
         return currentValue===x&&method==="descending"?"descending":currentValue===x&&method==="ascending"?"ascending":""
 
     }
-
-
+    const myRef = useRef(null)
+    const scrollToRef = (ref) => window.scrollTo(0, ref.current.offsetTop)
     const filtration=(y)=>{
         changeTable([...profiles].filter((obj) => {
             return Object.keys(obj).some((key) => {
@@ -107,7 +129,8 @@ const DataTable = ({profiles,clearData}) => {
 
             <input type="text" value={searchValue} placeholder={"search here..."} onChange={(e)=>{changeSearchValue(e.target.value)}}/>
             <button  onClick={()=> filtration(searchValue)}>search</button>
-
+            <button  onClick={()=> setModal(true)}>form</button>
+            <UserAddForm id={modal} onClose={closeModal} currentId={modal} setModal={setModal} show={modal}/>
             <table className={"profiles"}>
                 <thead>
                 <tr>
@@ -117,11 +140,13 @@ const DataTable = ({profiles,clearData}) => {
                     <th className={styling("email")} onClick={()=>{setFilter("email")}}>E-mail</th>
                     <th className={styling("phone")} onClick={()=>{setFilter("phone")}}>Phone Number</th>
                     <th className={styling("address")} onClick={()=>{filterAddress("address")}}>Address</th>
-                    <th className={styling("description")} onClick={()=>{setFilter("description")}}>Description</th>
                 </tr>
                 </thead>
                 <tbody>{Users}</tbody>
             </table>
+            <div ref={myRef}>
+                {cellInfo?<TableCellInfo clearCellData={clearCellData} data={cellInfo}/>:null}
+            </div>
         </>
     )
 }

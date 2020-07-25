@@ -95,3 +95,9 @@
 .spinner{
   margin: 15rem auto;
 }
+.TableCellInfo {
+  border: 1px solid black;
+  background-color: #c2d9c3;
+  margin: 2rem;
+  padding: 4px;
+}
