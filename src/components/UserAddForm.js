@@ -53,7 +53,7 @@ const UserAddForm=({formModal,closeModalForm,saveFormData})=>{
                     <input value={phone} onChange={e => onchange(e)} type="tel" placeholder="phone"
                            name="phone" required/>
                 </div>
-                <input type="submit" value={"SEND"} className="btn btn-primary my-1"/>
+                <input type="submit" value={"Добавить в таблицу"} className="btn btn-primary my-1"/>
                 <button className={"userFormButton"} onClick={()=>closeModalForm()}>CLOSE FORM</button>
             </form>
         </div>

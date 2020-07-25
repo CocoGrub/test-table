@@ -129,7 +129,7 @@ const DataTable = ({profiles,clearData,openModalForm}) => {
             <Pagination currentPage={currentPage} ItemsPerPage={ItemsPerPage} totalUsersCount={profiles.length} setPage={setPage}/>
             <input type="text" value={searchValue} placeholder={"search here..."} onChange={(e)=>{changeSearchValue(e.target.value)}}/>
             <button  onClick={()=> filtration(searchValue)}>search</button>
-            <button  onClick={()=> openModalForm(true)}>form</button>
+            <button  onClick={()=> openModalForm(true)}>добавить</button>
             <UserAddForm id={modal} onClose={closeModal} currentId={modal} setModal={setModal} show={modal}/>
             <table className={"profiles"}>
                 <thead>
