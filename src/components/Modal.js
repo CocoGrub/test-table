@@ -10,8 +10,8 @@ const Modal = ({modal,getUsers}) => {
     if (modal) {
         return createPortal(<div className={'modal'}>
             <div className={"center"}>
-                <button onClick={()=>getUsers(minSource)}>Display little massive</button>
-                <button onClick={()=>getUsers(maxSource)}>Display BIG massive</button>
+                <button className={"modal-button"}  onClick={()=>getUsers(minSource)}>Display little massive</button>
+                <button className={"modal-button"}  onClick={()=>getUsers(maxSource)}>Display BIG massive</button>
             </div>
 
 

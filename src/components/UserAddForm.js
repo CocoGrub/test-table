@@ -1,53 +1,67 @@
 import React, {useState} from "react";
 import {createPortal} from "react-dom";
+import {connect} from 'react-redux'
+import {closeModalForm, saveFormData} from "../store/MainReducer";
 
-const UserAddForm=({modal})=>{
+const UserAddForm=({formModal,closeModalForm,saveFormData})=>{
     const [formData, setFormData] = useState({
-        school: '',
-        degree: '',
-        fieldofstudy: '',
-        from: '',
-        to: '',
-        current: false,
-        description: ''
+        id: '',
+        firstName: '',
+        lastName: '',
+        email: '',
+        phone: '',
     })
 
-    const {school, degree, fieldofstudy, from, to, current, description} = formData
+    const {id, firstName, lastName, email, phone, } = formData
     const onchange = (e) => {
-        setFormData({...formData, [e.target.name]: e.target.value})
+        setFormData({...formData, [e.target.name]: e.target.name === 'id' ? parseFloat(e.target.value) : e.target.value})
     }
-    if (modal) {
+    const formSubmit=(e)=>{
+        e.preventDefault()
+        saveFormData(formData)
+        setFormData({
+            id: '',
+            firstName: '',
+            lastName: '',
+            email: '',
+            phone: '',
+        })
+    }
+
+    if (formModal) {
     return createPortal(<div className={'modal'}>
-            <h1 className="large text-primary">
-                Add An Education
-            </h1>
-            <p className="lead">
-                <i className="fas fa-code-branch"></i> Add any school or bootcamp
-            </p>
-            <small>* = required field</small>
-            <form className="form" onSubmit={(e)=>{e.preventDefault()}}>
+        <div className={"center user-form"}>
+            <h1 className="large text-primary">ADD AN USER</h1>
+            <form className="form" onSubmit={(e)=>formSubmit(e)}>
                 <div className="form-group">
-                    <input value={school} onChange={e => onchange(e)} type="text" placeholder="* School Title" name="school"
+                    <input value={id} onChange={e => onchange(e)} type="number" placeholder="id" name="id"
                            required/>
                 </div>
                 <div className="form-group">
-                    <input value={degree} onChange={e => onchange(e)} type="text" placeholder="* degree"
-                           name="degree" required/>
+                    <input value={lastName} onChange={e => onchange(e)} type="text" placeholder="lastName"
+                           name="lastName" required/>
                 </div>
                 <div className="form-group">
-                    <input value={fieldofstudy} onChange={e => onchange(e)} type="text" placeholder="fieldofstudy"
-                           name="fieldofstudy"/>
+                    <input value={firstName} onChange={e => onchange(e)} type="text" placeholder="firstName"
+                           name="firstName" required/>
                 </div>
                 <div className="form-group">
-                    <h4>From Date</h4>
-                    <input type="date" name="from" value={from} onChange={e => onchange(e)}/>
+                    <input value={email} onChange={e => onchange(e)} type="email" placeholder="email"
+                           name="email" required/>
                 </div>
-
-                <input type="submit" className="btn btn-primary my-1"/>
-                <a className="btn btn-light my-1" href="dashboard.html">Go Back</a>
+                <div className="form-group">
+                    <input value={phone} onChange={e => onchange(e)} type="tel" placeholder="phone"
+                           name="phone" required/>
+                </div>
+                <input type="submit" value={"SEND"} className="btn btn-primary my-1"/>
+                <button className={"userFormButton"} onClick={()=>closeModalForm()}>CLOSE FORM</button>
             </form>
-        </div>,document.body)}
+        </div>
+    </div>,document.body)}
     return null
 }
 
-export default UserAddForm;
+const mapStateToProps=(state)=>({
+    formModal:state.formModal
+})
+export default connect(mapStateToProps,{closeModalForm,saveFormData})(UserAddForm);

@@ -1,13 +1,16 @@
-import React, {useRef, useState} from "react";
+import React, {useEffect, useRef, useState} from "react";
 import PropTypes from 'prop-types'
 import Pagination from "./Pagination";
-import {clearData} from "../store/MainReducer";
+import {clearData, openModalForm} from "../store/MainReducer";
 import {connect} from "react-redux";
 import TableCellInfo from "./TableCellInfo";
 import UserAddForm from "./UserAddForm";
-import Modal from "./Modal";
 
-const DataTable = ({profiles,clearData}) => {
+
+const DataTable = ({profiles,clearData,openModalForm}) => {
+    useEffect(()=>{changeTable(profiles)},[
+        profiles
+    ])
     const [cellInfo,setCellInfo]=useState(null)
     const [table,changeTable]=useState(profiles)
     const [searchValue,changeSearchValue]=useState('')
@@ -60,19 +63,19 @@ const DataTable = ({profiles,clearData}) => {
         }
     }
     // sort address by city
-    const filterAddress=(x)=>{
-        if(x===currentFilter.currentValue){
-            changeTable([...table].sort((x, y) =>(x.address.city < y.address.city)?1:-1))
-            switchFilter(x,"ascending");
-        }else if(x!==currentFilter.currentValue&&currentFilter.method!=="descending") {
-            switchFilter(x,"descending");
-            changeTable([...table].sort((x, y) =>(x.address.city > y.address.city)?1:-1))
-        }else {
-            switchFilter(null,null);
-            changeTable([...profiles])
-
-        }
-    }
+    // const filterAddress=(x)=>{
+    //     if(x===currentFilter.currentValue){
+    //         changeTable([...table].sort((x, y) =>(x.address.city < y.address.city)?1:-1))
+    //         switchFilter(x,"ascending");
+    //     }else if(x!==currentFilter.currentValue&&currentFilter.method!=="descending") {
+    //         switchFilter(x,"descending");
+    //         changeTable([...table].sort((x, y) =>(x.address.city > y.address.city)?1:-1))
+    //     }else {
+    //         switchFilter(null,null);
+    //         changeTable([...profiles])
+    //
+    //     }
+    // }
 
 
 
@@ -96,7 +99,6 @@ const DataTable = ({profiles,clearData}) => {
             <td>{profile.lastName}</td>
             <td>{profile.email}</td>
             <td>{profile.phone}</td>
-            <td>{profile.address.city}</td>
         </tr>
     })
 
@@ -125,11 +127,9 @@ const DataTable = ({profiles,clearData}) => {
             <button onClick={()=>clearData()}> Return to source selection</button>
             <h2 className={"my-2"}>Users Data</h2>
             <Pagination currentPage={currentPage} ItemsPerPage={ItemsPerPage} totalUsersCount={profiles.length} setPage={setPage}/>
-
-
             <input type="text" value={searchValue} placeholder={"search here..."} onChange={(e)=>{changeSearchValue(e.target.value)}}/>
             <button  onClick={()=> filtration(searchValue)}>search</button>
-            <button  onClick={()=> setModal(true)}>form</button>
+            <button  onClick={()=> openModalForm(true)}>form</button>
             <UserAddForm id={modal} onClose={closeModal} currentId={modal} setModal={setModal} show={modal}/>
             <table className={"profiles"}>
                 <thead>
@@ -139,7 +139,6 @@ const DataTable = ({profiles,clearData}) => {
                     <th className={styling("lastName")} onClick={()=>{setFilter("lastName")}}>Last Name</th>
                     <th className={styling("email")} onClick={()=>{setFilter("email")}}>E-mail</th>
                     <th className={styling("phone")} onClick={()=>{setFilter("phone")}}>Phone Number</th>
-                    <th className={styling("address")} onClick={()=>{filterAddress("address")}}>Address</th>
                 </tr>
                 </thead>
                 <tbody>{Users}</tbody>
@@ -155,4 +154,4 @@ DataTable.propTypes={
     profiles:PropTypes.array.isRequired
 }
 
-export default connect(null,{clearData})( DataTable);
+export default connect(null,{clearData,openModalForm})( DataTable);

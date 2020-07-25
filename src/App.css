@@ -80,7 +80,7 @@
   padding: 10px;
 }
 
-.modal button{
+.modal .modal-button{
   font-family: Roboto;
   font-size: large;
   margin: 0 1rem 0 1rem;
@@ -100,4 +100,34 @@
   background-color: #c2d9c3;
   margin: 2rem;
   padding: 4px;
+}
+.form .form-group {
+  margin: 1.2rem 0;
+}
+
+.form .form-text {
+  display: block;
+  margin-top: 0.3rem;
+  color: #888;
+}
+
+.form input[type='text'],
+.form input[type='email'],
+.form input[type='password'],
+.form input[type='date'],
+.form input[type='tel'],
+.form input[type='number'],
+.form select,
+.form textarea {
+  display: block;
+  width: 100%;
+  font-size: 1.2rem;
+  border: 1px solid #ccc;
+}
+.user-form{
+  border: 1px solid black;
+  background-color: #dddddd;
+}
+.userFormButton{
+  margin-left: 20rem;
 }
