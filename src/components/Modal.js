@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React from "react";
 import {createPortal} from "react-dom";
 import {connect} from "react-redux";
 import {getUsers, maxSource, minSource} from "../store/MainReducer";
@@ -9,8 +9,8 @@ const Modal = ({modal,getUsers}) => {
     if (modal) {
         return createPortal(<div className={'modal'}>
             <div className={"center"}>
-                <button className={"modal-button"}  onClick={()=>getUsers(minSource)}>Display little massive</button>
-                <button className={"modal-button"}  onClick={()=>getUsers(maxSource)}>Display BIG massive</button>
+                <button className={"modal-button"}  onClick={()=>getUsers(minSource)}>Display little table</button>
+                <button className={"modal-button"}  onClick={()=>getUsers(maxSource)}>Display BIG table</button>
             </div>
         </div>, document.body)
     }

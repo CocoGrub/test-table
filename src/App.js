@@ -6,10 +6,7 @@ import ErrorIndicator from "./components/ErrorIndicator";
 import {connect} from "react-redux";
 function App({errors}) {
     const [modal, setModal] = useState(false)
-    const showModal = (v,k) => {
-        setModal(k)
 
-    }
     const closeModal = (k) => {
         if (k !== false) {
             setModal(false)

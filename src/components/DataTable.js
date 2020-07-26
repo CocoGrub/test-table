@@ -18,16 +18,10 @@ const DataTable = ({profiles,clearData,openModalForm}) => {
         currentValue:null,
         method:null
     })
-    const [modal, setModal] = useState(false)
-
     const clearCellData=()=>{
         setCellInfo(null)
     }
-    const closeModal = (k) => {
-        if (k !== false) {
-            setModal(false)
-        }
-    }
+
     const switchFilter=(x,y)=>{
         changeCurrentFilter({...currentFilter,currentValue: x,method: y});
     }
@@ -111,6 +105,7 @@ const DataTable = ({profiles,clearData,openModalForm}) => {
                     const tempSearch = y.toLowerCase().trim();
                     return tempKey.includes(tempSearch);
                 }
+                return null
             });
         }))
     }
