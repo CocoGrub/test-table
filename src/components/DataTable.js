@@ -6,7 +6,6 @@ import {connect} from "react-redux";
 import TableCellInfo from "./TableCellInfo";
 import UserAddForm from "./UserAddForm";
 
-
 const DataTable = ({profiles,clearData,openModalForm}) => {
     useEffect(()=>{changeTable(profiles)},[
         profiles
