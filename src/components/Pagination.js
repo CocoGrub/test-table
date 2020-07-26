@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-
+import PropTypes from 'prop-types'
 
 const Pagination = ({ItemsPerPage = 12, totalUsersCount,setPage,currentPage}) => {
 
@@ -16,9 +16,7 @@ const Pagination = ({ItemsPerPage = 12, totalUsersCount,setPage,currentPage}) =>
     return (
         <div className={"center"}>
         <div className={"pagination"}>
-
             {portionNumber > 1 && <button onClick={()=>{setPortionNumber(portionNumber - 1)}}>PREV</button>}
-
             {pageNumbers
                 .filter(p => p >= leftPortionPageNumber && p <= rightPortionPageNumber)
                 .map((p) => {
@@ -34,4 +32,11 @@ const Pagination = ({ItemsPerPage = 12, totalUsersCount,setPage,currentPage}) =>
         </div>
     )
 }
+Pagination.propTypes={
+    ItemsPerPage:PropTypes.number,
+    totalUsersCount:PropTypes.number.isRequired,
+    setPage:PropTypes.func.isRequired,
+    currentPage:PropTypes.func.isRequired
+}
+
 export default Pagination;

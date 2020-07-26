@@ -1,6 +1,6 @@
 export const GET_DATA='main/GET_DATA'
 export const DATA_ERROR='main/DATA_ERROR'
-export const CLOSE_MODAL='main/DATA_ERROR'
+export const CLOSE_MODAL='main/CLOSE_MODAL'
 export const CLEAR_DATA='main/CLEAR_DATA'
 export const OPEN_MODAL_FORM='main/OPEN_MODAL_FORM'
 export const CLOSE_MODAL_FORM='main/CLOSE_MODAL_FORM'

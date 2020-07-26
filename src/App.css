@@ -30,7 +30,7 @@
   padding-top: 12px;
   padding-bottom: 12px;
   text-align: left;
-  background-color: #4CAF50;
+  background-color: #407140;
   color: white;
 }
 
@@ -40,7 +40,7 @@
 
 .pagination {
   display: inline-block;
-  margin-bottom: 1rem;
+  margin: 1rem;
 }
 
 .pagination span {
@@ -54,9 +54,9 @@
 }
 
 .pagination .active {
-  background-color: #4CAF50;
+  background-color: #407140;
   color: white;
-  border: 1px solid #4CAF50;
+  border: 2px solid #4fe555;
 }
 
 
@@ -90,7 +90,7 @@
 }
 .modal button:hover{
   color: white;
-  background-color: #4CAF50;
+  background-color: #c2d9c3;
 }
 .spinner{
   margin: 15rem auto;
@@ -130,4 +130,18 @@
 }
 .userFormButton{
   margin-left: 20rem;
+}
+.error-indicator{
+  margin: 10rem 50rem 10rem 50rem;
+  padding: 2rem;
+  height: 5rem;
+  border: 1px solid black;
+  font-family: "Segoe UI Black";
+  font-size: large;
+  background-color: #eeb0bc;
+}
+.searchAndAdd{
+  display: flex;
+  justify-content:space-between;
+  background-color: #c2d9c3;
 }

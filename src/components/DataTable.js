@@ -18,22 +18,16 @@ const DataTable = ({profiles,clearData,openModalForm}) => {
         currentValue:null,
         method:null
     })
-    const clearCellData=()=>{
-        setCellInfo(null)
-    }
     const [modal, setModal] = useState(false)
 
-    const showModal = (v,k) => {
-        setModal(k)
-
+    const clearCellData=()=>{
+        setCellInfo(null)
     }
     const closeModal = (k) => {
         if (k !== false) {
             setModal(false)
         }
-
     }
-
     const switchFilter=(x,y)=>{
         changeCurrentFilter({...currentFilter,currentValue: x,method: y});
     }
@@ -48,9 +42,7 @@ const DataTable = ({profiles,clearData,openModalForm}) => {
             switchFilter(null,null);
             changeTable([...profiles])
         }
-
     }
-
     function dynamicSort(property) {
         let sortOrder = 1;
         if(property[0] === "-") {
@@ -76,16 +68,16 @@ const DataTable = ({profiles,clearData,openModalForm}) => {
     //
     //     }
     // }
-
-
-
+//pagination props
     const [currentPage,setCurrentPage]=useState(1)
     const [ItemsPerPage]=useState(10)
+
+    const setPage=(pageNumber)=>setCurrentPage(pageNumber)
 
     const indexOfLastPost=currentPage*ItemsPerPage
     const indexOfFirstPost=indexOfLastPost-ItemsPerPage
     const currentPosts = table.slice(indexOfFirstPost,indexOfLastPost)
-
+        //
     const getTableCellData=(x)=>{
         scrollToRef(myRef)
         setCellInfo(x)
@@ -102,14 +94,15 @@ const DataTable = ({profiles,clearData,openModalForm}) => {
         </tr>
     })
 
-    const setPage=(pageNumber)=>setCurrentPage(pageNumber)
+
     const {currentValue,method}=currentFilter
     function styling(x) {
         return currentValue===x&&method==="descending"?"descending":currentValue===x&&method==="ascending"?"ascending":""
-
     }
+    // scroll page to info component
     const myRef = useRef(null)
     const scrollToRef = (ref) => window.scrollTo(0, ref.current.offsetTop)
+    //
     const filtration=(y)=>{
         changeTable([...profiles].filter((obj) => {
             return Object.keys(obj).some((key) => {
@@ -126,11 +119,17 @@ const DataTable = ({profiles,clearData,openModalForm}) => {
         <>
             <button onClick={()=>clearData()}> Return to source selection</button>
             <h2 className={"my-2"}>Users Data</h2>
+
+            <div className={"searchAndAdd"}>
+                <button  onClick={()=> openModalForm(true)}>добавить</button>
+                <div>
+                    <input type="text" value={searchValue} placeholder={"search here..."} onChange={(e)=>{changeSearchValue(e.target.value)}}/>
+                    <button  onClick={()=> filtration(searchValue)}>search</button>
+                </div>
+            </div>
+
             <Pagination currentPage={currentPage} ItemsPerPage={ItemsPerPage} totalUsersCount={profiles.length} setPage={setPage}/>
-            <input type="text" value={searchValue} placeholder={"search here..."} onChange={(e)=>{changeSearchValue(e.target.value)}}/>
-            <button  onClick={()=> filtration(searchValue)}>search</button>
-            <button  onClick={()=> openModalForm(true)}>добавить</button>
-            <UserAddForm id={modal} onClose={closeModal} currentId={modal} setModal={setModal} show={modal}/>
+            <UserAddForm />
             <table className={"profiles"}>
                 <thead>
                 <tr>
@@ -156,7 +155,9 @@ const DataTable = ({profiles,clearData,openModalForm}) => {
 }
 
 DataTable.propTypes={
-    profiles:PropTypes.array.isRequired
+    profiles:PropTypes.array.isRequired,
+    clearData:PropTypes.func.isRequired,
+    openModalForm:PropTypes.func.isRequired
 }
 
 export default connect(null,{clearData,openModalForm})( DataTable);

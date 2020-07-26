@@ -1,5 +1,5 @@
 import React from "react";
-
+import PropTypes from 'prop-types'
 const TableCellInfo=({clearCellData,firstName,description,address={streetAddress:'Italy',city:'Rome',state:'Rome',zip:'12345'}})=>{
     const {streetAddress,city,state,zip}=address
     return(
@@ -16,6 +16,13 @@ const TableCellInfo=({clearCellData,firstName,description,address={streetAddress
         </div>
     )
 
+}
+
+TableCellInfo.propTypes={
+    clearCellData:PropTypes.func.isRequired,
+    firstName:PropTypes.string.isRequired,
+    description:PropTypes.string.isRequired,
+    address:PropTypes.object
 }
 
 export default TableCellInfo

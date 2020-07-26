@@ -2,6 +2,7 @@ import React, {useState} from "react";
 import {createPortal} from "react-dom";
 import {connect} from 'react-redux'
 import {closeModalForm, saveFormData} from "../store/MainReducer";
+import PropTypes from 'prop-types'
 
 const UserAddForm=({formModal,closeModalForm,saveFormData})=>{
     const [formData, setFormData] = useState({
@@ -59,6 +60,12 @@ const UserAddForm=({formModal,closeModalForm,saveFormData})=>{
         </div>
     </div>,document.body)}
     return null
+}
+
+UserAddForm.propTypes={
+    formModal:PropTypes.bool.isRequired,
+    closeModalForm:PropTypes.func.isRequired,
+    saveFormData:PropTypes.func.isRequired
 }
 
 const mapStateToProps=(state)=>({

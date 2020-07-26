@@ -1,13 +1,11 @@
 import React, {useState} from 'react';
 import './App.css';
-import {Provider} from 'react-redux';
-import store from '../src/store/store'
 import MainPage from "./components/MainPage";
 import Modal from "./components/Modal";
-
-function App() {
+import ErrorIndicator from "./components/ErrorIndicator";
+import {connect} from "react-redux";
+function App({errors}) {
     const [modal, setModal] = useState(false)
-
     const showModal = (v,k) => {
         setModal(k)
 
@@ -18,12 +16,17 @@ function App() {
         }
 
     }
+    if(errors){
+        return   <ErrorIndicator errors={errors}/>
+    }
     return (
-        <Provider store={store}>
+        <>
             < Modal id={modal} onClose={closeModal} currentId={modal} setModal={setModal} show={modal}/>
             <MainPage/>
-        </Provider>
+</>
     );
 }
-
-export default (App);
+const mapStateToProps=(state)=>({
+    errors:state.errors
+})
+export default connect(mapStateToProps)(App);

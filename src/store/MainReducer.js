@@ -14,8 +14,8 @@ const initialState = {
     modal:true,
     profiles: [],
     loading: false,
-    userSelect:false
-    // errors: {}
+    userSelect:false,
+    errors: null
 }
 function insertItemImHelper(array, action) {
     let newArray = array.slice()
@@ -37,9 +37,11 @@ export default function (state = initialState, action) {
             return {...state,formModal: false}
         case SAVE_FORM_DATA:
             return {...state,profiles: insertItemImHelper(state.profiles,payload)}
+        case DATA_ERROR:{
+            return {...state,errors:payload }
+        }
         default:
             return state
-
     }
 }
 
@@ -76,17 +78,15 @@ export const getUsers = (x) => async (dispatch) => {
     })
     try {
         const res = await axios.get(x)
-
         dispatch({
             type: GET_DATA,
             payload: res.data
         })
     } catch (err) {
-        // dispatch({
-        //     type: DATA_ERROR,
-        //     payload: {msg: err.response.statusText, status: err.response.status}
-        // })
-        console.log(err)
+        dispatch({
+            type: DATA_ERROR,
+            payload: {msg: err.message}
+        })
     }
 }
 // Clear users
