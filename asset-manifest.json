@@ -1,21 +1,21 @@
 {
   "files": {
-    "main.css": "/test-table/static/css/main.15611f0a.chunk.css",
-    "main.js": "/test-table/static/js/main.68143558.chunk.js",
-    "main.js.map": "/test-table/static/js/main.68143558.chunk.js.map",
-    "runtime-main.js": "/test-table/static/js/runtime-main.8c411718.js",
-    "runtime-main.js.map": "/test-table/static/js/runtime-main.8c411718.js.map",
-    "static/js/2.0308edd8.chunk.js": "/test-table/static/js/2.0308edd8.chunk.js",
-    "static/js/2.0308edd8.chunk.js.map": "/test-table/static/js/2.0308edd8.chunk.js.map",
-    "index.html": "/test-table/index.html",
-    "precache-manifest.e0188fa27c8fdf6c4a6fd76df1a2cc54.js": "/test-table/precache-manifest.e0188fa27c8fdf6c4a6fd76df1a2cc54.js",
-    "service-worker.js": "/test-table/service-worker.js",
-    "static/css/main.15611f0a.chunk.css.map": "/test-table/static/css/main.15611f0a.chunk.css.map",
-    "static/js/2.0308edd8.chunk.js.LICENSE.txt": "/test-table/static/js/2.0308edd8.chunk.js.LICENSE.txt",
-    "static/media/Ripple-1s-200px.svg": "/test-table/static/media/Ripple-1s-200px.a80c5d39.svg"
+    "main.css": "/ShopWithCart/static/css/main.15611f0a.chunk.css",
+    "main.js": "/ShopWithCart/static/js/main.68143558.chunk.js",
+    "main.js.map": "/ShopWithCart/static/js/main.68143558.chunk.js.map",
+    "runtime-main.js": "/ShopWithCart/static/js/runtime-main.9f2588dd.js",
+    "runtime-main.js.map": "/ShopWithCart/static/js/runtime-main.9f2588dd.js.map",
+    "static/js/2.0308edd8.chunk.js": "/ShopWithCart/static/js/2.0308edd8.chunk.js",
+    "static/js/2.0308edd8.chunk.js.map": "/ShopWithCart/static/js/2.0308edd8.chunk.js.map",
+    "index.html": "/ShopWithCart/index.html",
+    "precache-manifest.c31f55b416a4daf04ef80c1683d36a27.js": "/ShopWithCart/precache-manifest.c31f55b416a4daf04ef80c1683d36a27.js",
+    "service-worker.js": "/ShopWithCart/service-worker.js",
+    "static/css/main.15611f0a.chunk.css.map": "/ShopWithCart/static/css/main.15611f0a.chunk.css.map",
+    "static/js/2.0308edd8.chunk.js.LICENSE.txt": "/ShopWithCart/static/js/2.0308edd8.chunk.js.LICENSE.txt",
+    "static/media/Ripple-1s-200px.svg": "/ShopWithCart/static/media/Ripple-1s-200px.a80c5d39.svg"
   },
   "entrypoints": [
-    "static/js/runtime-main.8c411718.js",
+    "static/js/runtime-main.9f2588dd.js",
     "static/js/2.0308edd8.chunk.js",
     "static/css/main.15611f0a.chunk.css",
     "static/js/main.68143558.chunk.js"
