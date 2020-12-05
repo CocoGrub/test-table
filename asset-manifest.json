@@ -1,22 +1,22 @@
 {
   "files": {
-    "main.css": "/CocoGrub/test-table/static/css/main.15611f0a.chunk.css",
-    "main.js": "/CocoGrub/test-table/static/js/main.68143558.chunk.js",
-    "main.js.map": "/CocoGrub/test-table/static/js/main.68143558.chunk.js.map",
-    "runtime-main.js": "/CocoGrub/test-table/static/js/runtime-main.f1448a05.js",
-    "runtime-main.js.map": "/CocoGrub/test-table/static/js/runtime-main.f1448a05.js.map",
-    "static/js/2.815ad380.chunk.js": "/CocoGrub/test-table/static/js/2.815ad380.chunk.js",
-    "static/js/2.815ad380.chunk.js.map": "/CocoGrub/test-table/static/js/2.815ad380.chunk.js.map",
-    "index.html": "/CocoGrub/test-table/index.html",
-    "precache-manifest.e464f45a641043bc1c5a0f56a2215418.js": "/CocoGrub/test-table/precache-manifest.e464f45a641043bc1c5a0f56a2215418.js",
-    "service-worker.js": "/CocoGrub/test-table/service-worker.js",
-    "static/css/main.15611f0a.chunk.css.map": "/CocoGrub/test-table/static/css/main.15611f0a.chunk.css.map",
-    "static/js/2.815ad380.chunk.js.LICENSE.txt": "/CocoGrub/test-table/static/js/2.815ad380.chunk.js.LICENSE.txt",
-    "static/media/Ripple-1s-200px.svg": "/CocoGrub/test-table/static/media/Ripple-1s-200px.a80c5d39.svg"
+    "main.css": "/test-table/static/css/main.15611f0a.chunk.css",
+    "main.js": "/test-table/static/js/main.68143558.chunk.js",
+    "main.js.map": "/test-table/static/js/main.68143558.chunk.js.map",
+    "runtime-main.js": "/test-table/static/js/runtime-main.8c411718.js",
+    "runtime-main.js.map": "/test-table/static/js/runtime-main.8c411718.js.map",
+    "static/js/2.0308edd8.chunk.js": "/test-table/static/js/2.0308edd8.chunk.js",
+    "static/js/2.0308edd8.chunk.js.map": "/test-table/static/js/2.0308edd8.chunk.js.map",
+    "index.html": "/test-table/index.html",
+    "precache-manifest.e0188fa27c8fdf6c4a6fd76df1a2cc54.js": "/test-table/precache-manifest.e0188fa27c8fdf6c4a6fd76df1a2cc54.js",
+    "service-worker.js": "/test-table/service-worker.js",
+    "static/css/main.15611f0a.chunk.css.map": "/test-table/static/css/main.15611f0a.chunk.css.map",
+    "static/js/2.0308edd8.chunk.js.LICENSE.txt": "/test-table/static/js/2.0308edd8.chunk.js.LICENSE.txt",
+    "static/media/Ripple-1s-200px.svg": "/test-table/static/media/Ripple-1s-200px.a80c5d39.svg"
   },
   "entrypoints": [
-    "static/js/runtime-main.f1448a05.js",
-    "static/js/2.815ad380.chunk.js",
+    "static/js/runtime-main.8c411718.js",
+    "static/js/2.0308edd8.chunk.js",
     "static/css/main.15611f0a.chunk.css",
     "static/js/main.68143558.chunk.js"
   ]
