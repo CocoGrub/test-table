@@ -1,21 +1,21 @@
 {
   "files": {
-    "main.css": "/static/css/main.15611f0a.chunk.css",
-    "main.js": "/static/js/main.68143558.chunk.js",
-    "main.js.map": "/static/js/main.68143558.chunk.js.map",
-    "runtime-main.js": "/static/js/runtime-main.7ccf926b.js",
-    "runtime-main.js.map": "/static/js/runtime-main.7ccf926b.js.map",
-    "static/js/2.815ad380.chunk.js": "/static/js/2.815ad380.chunk.js",
-    "static/js/2.815ad380.chunk.js.map": "/static/js/2.815ad380.chunk.js.map",
-    "index.html": "/index.html",
-    "precache-manifest.286553acfc4b7493ecebf5225618aa11.js": "/precache-manifest.286553acfc4b7493ecebf5225618aa11.js",
-    "service-worker.js": "/service-worker.js",
-    "static/css/main.15611f0a.chunk.css.map": "/static/css/main.15611f0a.chunk.css.map",
-    "static/js/2.815ad380.chunk.js.LICENSE.txt": "/static/js/2.815ad380.chunk.js.LICENSE.txt",
-    "static/media/Ripple-1s-200px.svg": "/static/media/Ripple-1s-200px.a80c5d39.svg"
+    "main.css": "/CocoGrub/test-table/static/css/main.15611f0a.chunk.css",
+    "main.js": "/CocoGrub/test-table/static/js/main.68143558.chunk.js",
+    "main.js.map": "/CocoGrub/test-table/static/js/main.68143558.chunk.js.map",
+    "runtime-main.js": "/CocoGrub/test-table/static/js/runtime-main.f1448a05.js",
+    "runtime-main.js.map": "/CocoGrub/test-table/static/js/runtime-main.f1448a05.js.map",
+    "static/js/2.815ad380.chunk.js": "/CocoGrub/test-table/static/js/2.815ad380.chunk.js",
+    "static/js/2.815ad380.chunk.js.map": "/CocoGrub/test-table/static/js/2.815ad380.chunk.js.map",
+    "index.html": "/CocoGrub/test-table/index.html",
+    "precache-manifest.e464f45a641043bc1c5a0f56a2215418.js": "/CocoGrub/test-table/precache-manifest.e464f45a641043bc1c5a0f56a2215418.js",
+    "service-worker.js": "/CocoGrub/test-table/service-worker.js",
+    "static/css/main.15611f0a.chunk.css.map": "/CocoGrub/test-table/static/css/main.15611f0a.chunk.css.map",
+    "static/js/2.815ad380.chunk.js.LICENSE.txt": "/CocoGrub/test-table/static/js/2.815ad380.chunk.js.LICENSE.txt",
+    "static/media/Ripple-1s-200px.svg": "/CocoGrub/test-table/static/media/Ripple-1s-200px.a80c5d39.svg"
   },
   "entrypoints": [
-    "static/js/runtime-main.7ccf926b.js",
+    "static/js/runtime-main.f1448a05.js",
     "static/js/2.815ad380.chunk.js",
     "static/css/main.15611f0a.chunk.css",
     "static/js/main.68143558.chunk.js"
